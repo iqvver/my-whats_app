@@ -1,0 +1,15 @@
+@import "../../scss/base/variables";
+
+.input {
+  height: 25px;
+  width: 100%;
+  background-color: $text-subcolor;
+  border: none;
+  padding: 10px 20px;
+  color: $text-color;
+  font-weight: 500;
+
+  &::placeholder {
+    color: inherit;
+  }
+}

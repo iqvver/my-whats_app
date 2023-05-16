@@ -1,14 +1,32 @@
 import React from "react";
 import "./LoginForm.scss";
+import Input from "../../ui/inputs/Input";
+import Button from "../../ui/buttons/Button";
 
 const LoginForm = () => {
   return (
     <div className="login-container">
-      <div className="login-form">
-        <div className="login-form__title"> LoginForm</div>
-        <div className="login-form__body">inputs</div>
-        <div className="login-form__btm">button</div>
-        </div>
+      <div className="login-wrapper">
+        <div className="login-wrapper__title">Вход</div>
+        <form className="login-form">
+          <Input
+            type={"email"}
+            required={"required"}
+            name={"login"}
+            placeholder={"Введите логин(email)"}
+          />
+          <Input
+            type={"password"}
+            required={"required"}
+            name={"password"}
+            placeholder={"Введите пароль"}
+          />
+          <Button buttonType="submit" buttonName={"Войти"} />
+        </form>
+        <a href="" className="login-wrapper__reg">
+          Зарегистрироваться?
+        </a>
+      </div>
     </div>
   );
 };

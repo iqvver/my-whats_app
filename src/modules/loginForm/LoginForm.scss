@@ -9,12 +9,32 @@
     background-color: $bg-subcolor;
     border: 1px solid $text-subcolor;
   }
-  &-form {
+  &-wrapper {
     background-color: inherit;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+
+    &__title {
+      background-color: inherit;
+      font-size: 25px;
+    }
+
+    &__reg {
+      background-color: inherit;
+      font-size: 15px;
+    }
+  }
+
+  &-form {
+    padding: 5px;
+    height: 40%;
+    width: 100%;
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
