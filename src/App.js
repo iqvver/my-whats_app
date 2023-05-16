@@ -1,9 +1,10 @@
+import AuthPage from "./pages/AuthPage/AuthPage";
+import './App.scss';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        fghd
-      </header>
+    <div className="app">
+        <AuthPage />
     </div>
   );
 }
