@@ -1,10 +1,12 @@
-import AuthPage from "./pages/AuthPage/AuthPage";
 import './App.scss';
+import AuthPage from "./pages/AuthPage/AuthPage";
+import ChatPage from "./pages/ChatPage/ChatPage";
 
 function App() {
   return (
     <div className="app">
-        <AuthPage />
+      {/* <AuthPage /> */}
+      <ChatPage />
     </div>
   );
 }

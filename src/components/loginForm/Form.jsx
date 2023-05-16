@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoginForm.scss";
+import "./Form.scss";
 import Input from "../../ui/inputs/Input";
 import Button from "../../ui/buttons/Button";
 
