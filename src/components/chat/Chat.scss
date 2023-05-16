@@ -1,0 +1,43 @@
+@import "../../scss/base/variables";
+
+.chat {
+  padding: 5px 15px 5px 15px;
+  height: 70px;
+  background-color: $bg-subcolor;
+  display: flex;
+  margin-bottom: 10px;
+
+  &__ava {
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    img {
+      width: 40px;
+      border-radius: 100%;
+      margin-right: 50px;
+    }
+  }
+
+  &__descr {
+    width: 100%;
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__name {
+    background-color: inherit;
+  }
+  &__mess {
+    background-color: inherit;
+  }
+  &__data {
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: $text-subcolor;
+    font-size: 12px;
+  }
+}

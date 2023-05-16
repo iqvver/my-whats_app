@@ -1,0 +1,11 @@
+.chat-start {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: none;
+
+  &__input {
+    width: 100%;
+  }
+}

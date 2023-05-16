@@ -1,14 +1,14 @@
 import React from "react";
-import ChatHeader from "../../components/chatHeader/ChatHeader";
+import "./ChatModule.scss";
+import Header from "../../components/Header/Header";
 import ChatStart from "../../components/chatStart/ChatStart";
-import Chat from "../../components/chat/Chat";
 import ChatList from "../../subModules/chatList/ChatList";
 
 const ChatModule = () => {
   return (
-    <div>
-      <ChatHeader />
-      <ChatStart />
+    <div className="chat-module-container">
+      <Header name={"Я"} />
+      <ChatStart type={"text"} name={"chat"} placeholder={"Новый чат"} buttonName={"✔"} />
       <ChatList />
     </div>
   );

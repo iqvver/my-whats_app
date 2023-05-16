@@ -1,0 +1,15 @@
+@import "../../scss/base/variables";
+
+.chat-header {
+  padding: 0 20px 0 20px;
+  height: 70px;
+  background-color: $bg-subcolor;
+  display: flex;
+  align-items: center;
+
+  &__ava {
+    width: 40px;
+    border-radius: 100%;
+    margin-right: 50px;
+  }
+}

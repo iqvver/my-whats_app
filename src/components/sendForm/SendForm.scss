@@ -1,0 +1,10 @@
+@import '../../scss/base/variables';
+
+.send-form {
+  height: 70px;
+  width: 100%;
+  background-color: $bg-subcolor;
+  display: flex;
+  align-content: flex-end;
+  align-items: center;
+}
