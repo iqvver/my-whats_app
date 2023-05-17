@@ -29,15 +29,4 @@
   &__name {
     background-color: inherit;
   }
-  &__mess {
-    background-color: inherit;
-  }
-  &__data {
-    background-color: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    color: $text-subcolor;
-    font-size: 12px;
-  }
 }

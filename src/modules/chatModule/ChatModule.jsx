@@ -4,17 +4,18 @@ import Header from "../../components/Header/Header";
 import ChatStart from "../../components/chatStart/ChatStart";
 import ChatList from "../../subModules/chatList/ChatList";
 import { useDispatch, useSelector } from "react-redux";
-import { setInterlocutor } from "../../redux/interlocutorSlice";
+import { addChat } from "../../redux/chatSlice";
 
 const ChatModule = () => {
-  const chatId = useSelector((state) => state.chatId.chatId);
+  const chat = useSelector((state) => state.chat);
+  const idChat = chat.chats.length +1
   const dispatch = useDispatch();
 
-  const [newChatId, setChatId] = useState(chatId);
+  const [newChatId, setChatId] = useState(chat.chatId);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(setInterlocutor(newChatId));
+    dispatch(addChat({idChat, newChatId}));
   };
 
   return (
