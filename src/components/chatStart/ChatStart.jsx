@@ -4,20 +4,31 @@ import Input from "../../ui/inputs/Input";
 import Button from "../../ui/buttons/Button";
 
 const ChatStart = (props) => {
-  const { name, placeholder, type, buttonName } = props;
+  const {
+    name,
+    placeholder,
+    type,
+    buttonName,
+    value,
+    getChange,
+    onSubmit,
+    buttonType,
+  } = props;
   return (
-    <div className="chat-start">
+    <form className="chat-start" onSubmit={onSubmit}>
       <div className="chat-start__input">
         <Input
           type={type}
           name={name}
           placeholder={placeholder}
+          value={value}
+          getChange={getChange}
         />
       </div>
       <div className="chat-start__button">
-        <Button buttonName={buttonName} />
+        <Button buttonName={buttonName} buttonType={buttonType} />
       </div>
-    </div>
+    </form>
   );
 };
 

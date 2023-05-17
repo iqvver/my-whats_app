@@ -8,7 +8,9 @@ function App() {
 
   return (
     <div className="app">
-      {authItems.name && authItems.idInstance && authItems.apiTokenInstance && !authItems.error ? <ChatPage /> : <AuthPage />}
+      {//authItems.name && authItems.idInstance && authItems.apiTokenInstance && !authItems.error ? <ChatPage /> : <AuthPage />
+      }
+      <ChatPage /> 
     </div>
   );
 }

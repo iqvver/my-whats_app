@@ -8,7 +8,7 @@ const interlocutorSlice = createSlice({
 
     reducers: {
         setInterlocutor(state, payload) {
-            state.chatId = payload.payload.chatId;
+            state.chatId = payload.payload;
         },
     },
 });
