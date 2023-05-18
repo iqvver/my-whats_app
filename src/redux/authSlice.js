@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        name: '',
-        idInstance: '',
-        apiTokenInstance: '',
+        name: 'Valerii',
+        idInstance: '1101821228',
+        apiTokenInstance: '97647e8611ae4d969163dbb802be57095c5f327535714555aa',
         error: null,
     },
 

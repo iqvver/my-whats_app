@@ -40,7 +40,7 @@ const ChatModule = () => {
         getChange={(e) => setChatId(e.target.value)}
         onSubmit={onSubmit}
         buttonType={"submit"}
-        mask="99999999999"
+        mask="+9 (999) 999-99-99"
       />
       <ChatList chatList={chat} setCurrentId={setCurrentId} />
     </div>

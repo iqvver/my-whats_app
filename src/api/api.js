@@ -1,15 +1,16 @@
-import * as axios from "axios";
+import axios from 'axios';
 
 const baseURL = `https://api.green-api.com`;
 
-async function sendMessage(idInstance, apiTokenInstance, message, chatId) {
-    const body = {
-        chatId: `${chatId}@c.us`,
-        message: message,
-    }
+export const chatAPI = {
+    async sendMessage(message, idInstance, apiTokenInstance, currentChat) {
+        const body = {
+            chatId: `${currentChat}@c.us`,
+            message: message,
+        }
 
-    const { data } = await axios.post(`${BASE_URL}/waInstance${idInstance}/SendMessage/${apiTokenInstance}`, body, {
-        headers: { "Content-Type": "application/json" },
-    })
-    return data
+        await axios.post(`${baseURL}/waInstance${idInstance}/SendMessage/${apiTokenInstance}`, body, {
+            headers: { "Content-Type": "application/json" },
+        })
+    }
 }
