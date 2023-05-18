@@ -4,10 +4,8 @@ const chatSlice = createSlice({
     name: "chat",
     initialState: {
         chats: [],
-        currentChat: {
-            chatId: "",
-            messages: [],
-        },
+        currentChat: '',
+        currentChatId: '',
     },
 
     reducers: {
@@ -15,14 +13,13 @@ const chatSlice = createSlice({
             state.chats = [...state.chats, payload.payload]
         },
         setCurrentChat: (state, payload) => {
-            const newCurrentChat = state.chats.find((chat) => chat.chatId === payload.payload)
-            state.currentChat = newCurrentChat
+            let chatId = state.chats.findIndex(chat => chat.newChatId === payload.payload)
+            state.currentChat = payload.payload;
+            state.currentChatId = chatId;
         },
         addMessage: (state, payload) => {
-            state.currentChat = {
-                ...state.currentChat,
-                messages: [...state.currentChat.messages, payload.payload],
-            }
+            let chatId = state.chats.findIndex(chat => chat.newChatId === state.currentChat)
+            state.chats[chatId].messages = [...state.chats[chatId].messages, payload.payload];
         },
     },
 });

@@ -1,13 +1,11 @@
 import React from "react";
 import Chat from "../../components/chat/Chat";
-import { useSelector } from "react-redux";
 
-const ChatList = () => {
-  const chatList = useSelector((state) => state.chat.chats);
+const ChatList = ({ chatList, setCurrentId }) => {
   return (
     <>
-      {chatList.map((chat) => (
-        <Chat key={chat.idChat} chat={chat.newChatId} />
+      {chatList?.chats.map((chat) => (
+        <Chat key={chat.idChat} chat={chat} setCurrentId={setCurrentId} />
       ))}
     </>
   );

@@ -1,8 +1,8 @@
 import React from "react";
 import "./Header.scss";
-import Ava from '../../assets/images/ava.jpg'
+import Ava from "../../assets/images/ava.jpg";
 
-const ChatHeader = ({ name }) => {
+const Header = ({ name }) => {
   return (
     <div className="chat-header">
       <img className="chat-header__ava" src={Ava} alt="Avatar" />
@@ -11,4 +11,4 @@ const ChatHeader = ({ name }) => {
   );
 };
 
-export default ChatHeader;
+export default Header;

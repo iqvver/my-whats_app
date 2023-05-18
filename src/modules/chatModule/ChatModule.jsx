@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ChatModule.scss";
 import Header from "../../components/Header/Header";
 import ChatStart from "../../components/chatStart/ChatStart";
 import ChatList from "../../subModules/chatList/ChatList";
 import { useDispatch, useSelector } from "react-redux";
-import { addChat } from "../../redux/chatSlice";
+import { addChat, setCurrentChat } from "../../redux/chatSlice";
 
 const ChatModule = () => {
   const chat = useSelector((state) => state.chat);
+  let userName = useSelector((state) => state.isAuth.name);
   const idChat = chat.chats.length +1
+  const messages = [];
   const dispatch = useDispatch();
 
-  const [newChatId, setChatId] = useState(chat.chatId);
+  const [newChatId, setChatId] = useState('');
+  const [currentId, setCurrentId] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(addChat({idChat, newChatId}));
+    dispatch(addChat({ idChat, newChatId, messages }));
   };
+
+  useEffect(() => {
+    dispatch(setCurrentChat(currentId));
+  }, [currentId]);
+
+  !userName ? (userName = "Я") : (userName = userName);
 
   return (
     <div className="chat-module-container">
-      <Header name={"Я"} />
+      <Header name={userName} />
       <ChatStart
         type={"text"}
         name={"chat"}
@@ -31,7 +40,7 @@ const ChatModule = () => {
         onSubmit={onSubmit}
         buttonType={"submit"}
       />
-      <ChatList />
+      <ChatList chatList={chat} setCurrentId={setCurrentId} />
     </div>
   );
 };

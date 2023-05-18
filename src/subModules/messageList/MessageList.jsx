@@ -2,12 +2,13 @@ import React from "react";
 import "./MessageList.scss";
 import Message from "../../components/message/Message";
 
-const MessageList = () => {
+const MessageList = ({ currentMessageList }) => {
   return (
-    <div className="message-list">
-      <Message />
-      <Message />
-    </div>
+    <>
+      {currentMessageList?.messages.map((message, index) => (
+        <Message key={index} message={message.message} />
+      ))}
+    </>
   );
 };
 
