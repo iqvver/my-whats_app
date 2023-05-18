@@ -9,17 +9,17 @@ import { addChat, setCurrentChat } from "../../redux/chatSlice";
 const ChatModule = () => {
   const chat = useSelector((state) => state.chat);
   let userName = useSelector((state) => state.isAuth.name);
-  const idChat = chat.chats.length +1
+  const idChat = chat.chats.length + 1;
   const messages = [];
   const dispatch = useDispatch();
 
-  const [newChatId, setChatId] = useState('');
-  const [currentId, setCurrentId] = useState('');
+  const [newChatId, setChatId] = useState("");
+  const [currentId, setCurrentId] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(addChat({ idChat, newChatId, messages }));
-    setChatId('')
+    setChatId("");
   };
 
   useEffect(() => {
@@ -40,6 +40,7 @@ const ChatModule = () => {
         getChange={(e) => setChatId(e.target.value)}
         onSubmit={onSubmit}
         buttonType={"submit"}
+        mask="99999999999"
       />
       <ChatList chatList={chat} setCurrentId={setCurrentId} />
     </div>

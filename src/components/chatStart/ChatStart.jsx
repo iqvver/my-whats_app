@@ -13,7 +13,8 @@ const ChatStart = (props) => {
     getChange,
     onSubmit,
     buttonType,
-    itemDesabled
+    itemDesabled,
+    mask
   } = props;
   return (
     <form className="chat-start" onSubmit={onSubmit}>
@@ -25,6 +26,7 @@ const ChatStart = (props) => {
           value={value}
           getChange={getChange}
           itemDesabled={itemDesabled}
+          mask={mask}
         />
       </div>
       <div className="chat-start__button">
