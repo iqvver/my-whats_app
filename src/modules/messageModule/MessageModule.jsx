@@ -9,15 +9,24 @@ import { addMessage } from "../../redux/chatSlice";
 const MessageModule = () => {
   const currentChat = useSelector((state) => state.chat.currentChat);
   const currentChatId = useSelector((state) => state.chat.currentChatId);
-  const currentMessageList = useSelector((state) => state.chat.chats[currentChatId]);
+  const currentMessageList = useSelector(
+    (state) => state.chat.chats[currentChatId]
+  );
   const dispatch = useDispatch();
-
   const [message, setMessage] = useState("");
+  const [itemDesabled, showDesabled] = useState(true);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(addMessage({message}));
+    dispatch(addMessage({ message }));
+    setMessage("");
   };
+
+  useEffect(() => {
+    if (currentChat) {
+      showDesabled(false);
+    }
+  }, [currentChat]);
 
   return (
     <div className="message-module-container">
@@ -29,6 +38,7 @@ const MessageModule = () => {
           getChange={(e) => setMessage(e.target.value)}
           onSubmit={onSubmit}
           buttonType={"submit"}
+          itemDesabled={itemDesabled}
         />
       </div>
     </div>

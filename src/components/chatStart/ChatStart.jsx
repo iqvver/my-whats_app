@@ -13,6 +13,7 @@ const ChatStart = (props) => {
     getChange,
     onSubmit,
     buttonType,
+    itemDesabled
   } = props;
   return (
     <form className="chat-start" onSubmit={onSubmit}>
@@ -23,10 +24,11 @@ const ChatStart = (props) => {
           placeholder={placeholder}
           value={value}
           getChange={getChange}
+          itemDesabled={itemDesabled}
         />
       </div>
       <div className="chat-start__button">
-        <Button buttonName={buttonName} buttonType={buttonType} />
+        <Button buttonName={buttonName} buttonType={buttonType} itemDesabled={itemDesabled} />
       </div>
     </form>
   );

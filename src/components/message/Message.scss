@@ -1,18 +1,20 @@
-@import  '../../scss/base/variables';
+@import "../../scss/base/variables";
 
 .message {
   position: relative;
   margin-bottom: 10px;
-  margin-left: calc(100% - 240px);
+  margin-left: calc(45%);
   padding: 10px;
   background-color: $message-color;
   width: 50%;
+  height: auto;
   min-height: 50px;
   text-align: left;
   border: 1px solid $message-color;
   border-radius: 10px;
   display: flex;
   align-items: center;
+  overflow-x: hidden;
 
   &:after {
     content: "";

@@ -19,6 +19,7 @@ const ChatModule = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(addChat({ idChat, newChatId, messages }));
+    setChatId('')
   };
 
   useEffect(() => {

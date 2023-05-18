@@ -2,7 +2,7 @@ import React from "react";
 import "./SendForm.scss";
 import ChatStart from "../chatStart/ChatStart";
 
-const SendForm = ({ value, getChange, buttonType, onSubmit }) => {
+const SendForm = ({ value, getChange, buttonType, onSubmit, itemDesabled }) => {
   return (
     <div className="send-form">
       <ChatStart
@@ -14,6 +14,7 @@ const SendForm = ({ value, getChange, buttonType, onSubmit }) => {
         getChange={getChange}
         buttonType={buttonType}
         onSubmit={onSubmit}
+        itemDesabled={itemDesabled}
       />
     </div>
   );

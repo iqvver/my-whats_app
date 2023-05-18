@@ -5,9 +5,15 @@ const Button = ({
   buttonClick = null,
   buttonName = "Кнопка",
   buttonType = "button",
+  itemDesabled,
 }) => {
   return (
-    <button className="button" type={buttonType} onClick={buttonClick}>
+    <button
+      className="button"
+      disabled={itemDesabled}
+      type={buttonType}
+      onClick={buttonClick}
+    >
       {buttonName}
     </button>
   );
