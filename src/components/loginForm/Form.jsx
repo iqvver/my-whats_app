@@ -4,7 +4,7 @@ import Input from "../../ui/inputs/Input";
 import Button from "../../ui/buttons/Button";
 
 const LoginForm = (props) => {
-  const { setIdInst, setApiToken, apiToken, idInst, setName, name, onSubmit } =
+  const { setIdInst, setApiToken, apiToken, idInst, setName, chatId, onSubmit } =
     props;
   return (
     <div className="login-container">
@@ -19,7 +19,7 @@ const LoginForm = (props) => {
             name={"Name"}
             placeholder={"Имя (Какое нравится)"}
             getChange={(e) => setName(e.target.value)}
-            value={name}
+            value={chatId}
           />
           <label className="login__label" htmlFor="IdInstance">
             IdInstance

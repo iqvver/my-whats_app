@@ -21,13 +21,10 @@ const chatSlice = createSlice({
             state.currentChat = payload.payload;
             state.currentChatId = chatId;
         },
-        addMessage: (state, payload) => {
-            let chatId = state.chats.findIndex(chat => chat.newChatId === state.currentChat)
-            state.chats[chatId].messages = [...state.chats[chatId].messages, payload.payload];
-        },
 
         addReseivedMessage: (state, payload) => {
-            const chatId = state.chats.findIndex(chat => chat.newChatId === payload.payload.sender)
+            console.log('re',payload);
+            const chatId = state.chats.findIndex(chat => chat.newChatId === payload.payload.chatId)
             state.chats[chatId].messages = [...state.chats[chatId].messages, payload.payload];
         },
 
@@ -53,6 +50,6 @@ const chatSlice = createSlice({
     },
 });
 
-export const { setCurrentChat, addChat, addMessage, addReseivedMessage } = chatSlice.actions;
+export const { setCurrentChat, addChat, addReseivedMessage } = chatSlice.actions;
 
 export default chatSlice.reducer;

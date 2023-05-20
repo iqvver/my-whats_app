@@ -4,7 +4,6 @@ import Header from "../../components/Header/Header";
 import SendForm from "../../components/sendForm/SendForm";
 import MessageList from "../../subModules/messageList/MessageList";
 import { useDispatch, useSelector } from "react-redux";
-import { addMessage } from "../../redux/chatSlice";
 import { sendNewMessage, receiveMessage } from "../../actions/actions";
 
 const MessageModule = () => {
@@ -14,7 +13,6 @@ const MessageModule = () => {
     (state) => state.chat.chats[currentChatId]
   );
   const idInstance = useSelector((state) => state.isAuth.idInstance);
-  const sender = useSelector((state) => state.isAuth.name);
   const apiTokenInstance = useSelector(
     (state) => state.isAuth.apiTokenInstance
   );
@@ -31,15 +29,12 @@ const MessageModule = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(addMessage({ message, sender }));
     dispatch(sendNewMessage(apiData));
-    dispatch(receiveMessage(apiData));
     setMessage("");
   };
 
   const addNewMessage = () => {
     dispatch(receiveMessage(apiData));
-    console.log("1");
   };
 
   useEffect(() => {

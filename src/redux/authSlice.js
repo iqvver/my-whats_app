@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        name: '79622689318',
+        chatId: '79622689318',
         idInstance: '1101821228',
         apiTokenInstance: '97647e8611ae4d969163dbb802be57095c5f327535714555aa',
         error: null,
@@ -13,7 +13,7 @@ const authSlice = createSlice({
         isAuth(state, payload) {
             state.idInstance = payload.payload.idInst;
             state.apiTokenInstance = payload.payload.apiToken;
-            state.name = payload.payload.name;
+            state.chatId = payload.payload.chatId;
         },
     },
 });

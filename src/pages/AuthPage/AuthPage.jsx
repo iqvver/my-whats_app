@@ -7,13 +7,13 @@ const AuthPage = () => {
   const authItems = useSelector((state) => state.isAuth);
   const dispatch = useDispatch();
 
-  const [name, setName] = useState(authItems.name);
+  const [chatId, setName] = useState(authItems.name);
   const [idInst, setIdInst] = useState(authItems.idInstance);
   const [apiToken, setApiToken] = useState(authItems.apiTokenInstance);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(isAuth({ idInst, apiToken, name }));
+    dispatch(isAuth({ idInst, apiToken, chatId }));
   };
 
   return (
@@ -23,7 +23,7 @@ const AuthPage = () => {
       apiToken={apiToken}
       setApiToken={setApiToken}
       setName={setName}
-      name={name}
+      name={chatId}
       onSubmit={onSubmit}
     />
   );

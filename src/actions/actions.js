@@ -20,9 +20,14 @@ export const receiveMessage = createAsyncThunk(
         const { idInstance, apiTokenInstance } = apiData;
         try {
             const data = await getMessageAPI.getMessage(idInstance, apiTokenInstance)
-            const message = data.body.messageData.textMessageData.textMessage;
-            const sender = data.body.senderData.chatId.replace(/[^0-9]/g, "");
-            const textMessage = { message, sender }
+            let message = data.body.messageData?.textMessageData?.textMessage;
+            {
+                message ? message = data.body.messageData?.textMessageData?.textMessage :
+                    message = data.body.messageData.extendedTextMessageData.text
+            }
+
+            const chatId = data.body.senderData.chatId.replace(/[^0-9]/g, "");
+            const textMessage = { message, chatId }
             dispatch(addReseivedMessage(textMessage));
             let receiptId = data.receiptId;
 

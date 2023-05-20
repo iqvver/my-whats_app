@@ -3,7 +3,7 @@ import axios from 'axios';
 const baseURL = `https://api.green-api.com`;
 
 export const sendMessageAPI = {
-    async sendMessage(idInstance, apiTokenInstance, message, currentChat) {
+    async sendMessage(idInstance, apiTokenInstance, message, currentChat,) {
         const body = {
             chatId: `${currentChat}@c.us`,
             message: message,
@@ -15,7 +15,6 @@ export const sendMessageAPI = {
         return data
     },
 }
-
 
 export const getMessageAPI = {
     async getMessage(idInstance, apiTokenInstance) {
