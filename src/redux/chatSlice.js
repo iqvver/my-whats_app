@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchChat } from "../actions/actions";
+import { sendNewMessage, receiveMessage } from "../actions/actions";
 import { setError } from '../helpers/helper-reduser'
 
 const chatSlice = createSlice({
@@ -26,15 +26,23 @@ const chatSlice = createSlice({
         },
 
         extraReducers: {
-            [fetchChat.pending]: (state) => {
+            [sendNewMessage.pending]: (state) => {
                 state.status = 'loading';
                 state.error = null;
             },
-            [fetchChat.fulfilled]: (state, action) => {
+            [sendNewMessage.fulfilled]: (state, payload) => {
                 state.status = 'resolved';
-                state.res = action.payload
             },
-            [fetchChat.rejected]: setError,
+            [sendNewMessage.rejected]: setError,
+
+            [receiveMessage.pending]: (state) => {
+                state.status = 'loading';
+                state.error = null;
+            },
+            [receiveMessage.fulfilled]: (state, payload, action) => {
+                state.status = 'resolved';
+            },
+            [receiveMessage.rejected]: setError,
         },
     },
 });

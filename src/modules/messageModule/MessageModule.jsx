@@ -5,7 +5,7 @@ import SendForm from "../../components/sendForm/SendForm";
 import MessageList from "../../subModules/messageList/MessageList";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../../redux/chatSlice";
-import { fetchChat } from "../../actions/actions";
+import { sendNewMessage, receiveMessage } from "../../actions/actions";
 
 const MessageModule = () => {
   const currentChat = useSelector((state) => state.chat.currentChat);
@@ -30,7 +30,8 @@ const MessageModule = () => {
       apiTokenInstance,
     };
     dispatch(addMessage({ message }));
-    dispatch(fetchChat(apiData));
+    dispatch(sendNewMessage(apiData));
+    dispatch(receiveMessage(apiData));
     setMessage("");
   };
 
