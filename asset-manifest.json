@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/myWhatsApp/static/css/main.fdbfd859.css",
+    "main.js": "/myWhatsApp/static/js/main.d79bef5c.js",
+    "static/media/ava.jpg": "/myWhatsApp/static/media/ava.906be2ae19abdc3eb252.jpg",
+    "index.html": "/myWhatsApp/index.html",
+    "main.fdbfd859.css.map": "/myWhatsApp/static/css/main.fdbfd859.css.map",
+    "main.d79bef5c.js.map": "/myWhatsApp/static/js/main.d79bef5c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fdbfd859.css",
+    "static/js/main.d79bef5c.js"
+  ]
+}
