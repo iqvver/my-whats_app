@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        chatId: '79622689318',
+        chatId: '',
         idInstance: '1101821228',
         apiTokenInstance: '97647e8611ae4d969163dbb802be57095c5f327535714555aa',
         error: null,

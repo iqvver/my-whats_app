@@ -1,11 +1,11 @@
 import React from "react";
 import "./SendForm.scss";
-import ChatStart from "../chatStart/ChatStart";
+import InputSend from "../inputSend/InputSend";
 
 const SendForm = ({ value, getChange, buttonType, onSubmit, itemDesabled }) => {
   return (
     <div className="send-form">
-      <ChatStart
+      <InputSend
         type={"text"}
         name={"message"}
         placeholder={"Введите сообщение"}

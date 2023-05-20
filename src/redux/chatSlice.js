@@ -33,7 +33,7 @@ const chatSlice = createSlice({
                 state.status = 'loading';
                 state.error = null;
             },
-            [sendNewMessage.fulfilled]: (state, action, payload) => {
+            [sendNewMessage.fulfilled]: (state) => {
                 state.status = 'resolved';
             },
 
@@ -41,7 +41,7 @@ const chatSlice = createSlice({
                 state.status = 'loading';
                 state.error = null;
             },
-            [receiveMessage.fulfilled]: (state, payload, action) => {
+            [receiveMessage.fulfilled]: (state) => {
                 state.status = 'resolved';
             },
             [sendNewMessage.rejected]: setError,

@@ -7,15 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendNewMessage, receiveMessage } from "../../actions/actions";
 
 const MessageModule = () => {
-  const currentChat = useSelector((state) => state.chat.currentChat);
-  const currentChatId = useSelector((state) => state.chat.currentChatId);
-  const currentMessageList = useSelector(
-    (state) => state.chat.chats[currentChatId]
-  );
-  const idInstance = useSelector((state) => state.isAuth.idInstance);
-  const apiTokenInstance = useSelector(
-    (state) => state.isAuth.apiTokenInstance
-  );
+  const {currentChat, currentChatId} = useSelector((state) => state.chat);
+  const currentMessageList = useSelector((state) => state.chat.chats[currentChatId]);
+  const {idInstance, apiTokenInstance} = useSelector((state) => state.isAuth);
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
   const [itemDesabled, showDesabled] = useState(true);

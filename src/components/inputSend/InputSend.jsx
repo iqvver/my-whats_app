@@ -1,9 +1,9 @@
 import React from "react";
-import "./ChatStart.scss";
+import "./InputSend.scss";
 import Input from "../../ui/inputs/Input";
 import Button from "../../ui/buttons/Button";
 
-const ChatStart = (props) => {
+const InputSend = (props) => {
   const {
     name,
     placeholder,
@@ -36,4 +36,4 @@ const ChatStart = (props) => {
   );
 };
 
-export default ChatStart;
+export default InputSend;
