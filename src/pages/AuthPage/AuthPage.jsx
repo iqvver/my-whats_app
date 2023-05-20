@@ -3,6 +3,7 @@ import Form from "../../components/loginForm/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { isAuth } from "../../redux/authSlice";
 
+//страница входа 
 const AuthPage = () => {
   const authItems = useSelector((state) => state.isAuth);
   const dispatch = useDispatch();

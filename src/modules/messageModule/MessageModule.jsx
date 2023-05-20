@@ -6,7 +6,13 @@ import MessageList from "../../subModules/messageList/MessageList";
 import { useDispatch, useSelector } from "react-redux";
 import { sendNewMessage, receiveMessage } from "../../actions/actions";
 
+//контейнерная компонента (HOС) для получения данных для сообщений
+//и всех паретров для их отрисовки
+
 const MessageModule = () => {
+
+  //получение данных и стейта
+  //десткуктуризация
   const {currentChat, currentChatId} = useSelector((state) => state.chat);
   const currentMessageList = useSelector((state) => state.chat.chats[currentChatId]);
   const {idInstance, apiTokenInstance} = useSelector((state) => state.isAuth);
@@ -14,6 +20,7 @@ const MessageModule = () => {
   const [message, setMessage] = useState("");
   const [itemDesabled, showDesabled] = useState(true);
 
+  //обьект для обрадоткт API
   let apiData = {
     message,
     idInstance,
@@ -21,6 +28,7 @@ const MessageModule = () => {
     apiTokenInstance,
   };
 
+  //отправка  сообщения
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(sendNewMessage(apiData));
@@ -31,6 +39,8 @@ const MessageModule = () => {
     dispatch(receiveMessage(apiData));
   };
 
+  //обновление для получения сообщений в реальном времени
+  //интервал 10 сек
   useEffect(() => {
     const interval = setInterval(() => {
       addNewMessage();
@@ -38,6 +48,7 @@ const MessageModule = () => {
     return () => clearInterval(interval);
   }, []);
 
+  //отключение инпута и кнопки, когда не выбран чат
   useEffect(() => {
     if (currentChat) {
       showDesabled(false);

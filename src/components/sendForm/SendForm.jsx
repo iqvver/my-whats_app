@@ -2,6 +2,8 @@ import React from "react";
 import "./SendForm.scss";
 import InputSend from "../inputSend/InputSend";
 
+// переиспользуемый компонент для отправки нового сообщения
+
 const SendForm = ({ value, getChange, buttonType, onSubmit, itemDesabled }) => {
   return (
     <div className="send-form">

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+//срез входа в чат
 const authSlice = createSlice({
     name: "auth",
     initialState: {

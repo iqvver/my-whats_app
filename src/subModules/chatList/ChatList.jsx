@@ -1,6 +1,7 @@
 import React from "react";
 import Chat from "../../components/chat/Chat";
 
+//мапинг списка чатов
 const ChatList = ({ chatList, setCurrentId }) => {
   return (
     <>

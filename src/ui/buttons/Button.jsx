@@ -1,6 +1,7 @@
 import React from "react";
 import "./Button.scss";
 
+//настраиваемая, переиспользуемая кнопка
 const Button = ({
   buttonClick = null,
   buttonName = "Кнопка",

@@ -3,6 +3,8 @@ import "./InputSend.scss";
 import Input from "../../ui/inputs/Input";
 import Button from "../../ui/buttons/Button";
 
+// переиспользуемый компонент для создания нового чата и 
+// отправки сообщений
 const InputSend = (props) => {
   const {
     name,

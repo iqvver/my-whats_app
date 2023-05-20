@@ -3,6 +3,8 @@ import "./Form.scss";
 import Input from "../../ui/inputs/Input";
 import Button from "../../ui/buttons/Button";
 
+// форма входа в приложение
+// импутыи кнопки пеиспользкемы и импортируются
 const LoginForm = (props) => {
   const { setIdInst, setApiToken, apiToken, idInst, setName, chatId, onSubmit } =
     props;

@@ -3,14 +3,17 @@ import { useSelector } from "react-redux";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import ChatPage from "./pages/ChatPage/ChatPage";
 
+//точка входа в приложение
+//если данные данные из системы GREEN-API (idInstance, apiTokenInstance)
+//введены то произойдет переключение на страницу с чатом
+//надо переделать на ROUTE
 function App() {
-  const authItems = useSelector((state) => state.isAuth);
+  const { chatId, idInstance, apiTokenInstance, error } = useSelector((state) => state.isAuth);
 
   return (
     <div className="app">
-      {//authItems.chatId && authItems.idInstance && authItems.apiTokenInstance && !authItems.error ? <ChatPage /> : <AuthPage />
+      {chatId && idInstance && apiTokenInstance && !error ? <ChatPage /> : <AuthPage />
       }
-      <ChatPage /> 
     </div>
   );
 }

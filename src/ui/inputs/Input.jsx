@@ -2,6 +2,7 @@ import React from "react";
 import "./Input.scss";
 import InputMask from "react-input-mask";
 
+//настраиваемый, переиспользуемый инпут(поле ввода)
 const Input = (props) => {
   const {
     required,

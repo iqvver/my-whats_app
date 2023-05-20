@@ -6,7 +6,12 @@ import ChatList from "../../subModules/chatList/ChatList";
 import { useDispatch, useSelector } from "react-redux";
 import { addChat, setCurrentChat } from "../../redux/chatSlice";
 
+//контейнерная компонента (HOС) для получения данных для чата
+//и всех паретров для его отрисовки
+
 const ChatModule = () => {
+
+  //получение данных и стейта
   const chat = useSelector((state) => state.chat);
   let userName = useSelector((state) => state.isAuth.name);
   const idChat = chat.chats.length + 1;
@@ -16,16 +21,19 @@ const ChatModule = () => {
   const [newChatId, setChatId] = useState("");
   const [currentId, setCurrentId] = useState("");
 
+  //добавление чата
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(addChat({ idChat, newChatId, messages }));
     setChatId("");
   };
 
+  //переключение между чатами
   useEffect(() => {
     dispatch(setCurrentChat(currentId));
   }, [currentId]);
 
+  //что бы имя не было пустым
   !userName ? (userName = "Я") : (userName = userName);
 
   return (

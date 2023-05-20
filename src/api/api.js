@@ -1,7 +1,13 @@
 import axios from 'axios';
+// компонент Api в котором формируется запрос на сервер и получает ответ
+// базовый адрес запроса на сервер
 
-const baseURL = `https://api.green-api.com`;
+const instance = axios.create({
+    baseURL: `https://api.green-api.com`,
+    headers: { "Content-Type": "application/json" }
+});
 
+//отправка сообщения на сервер
 export const sendMessageAPI = {
     async sendMessage(idInstance, apiTokenInstance, message, currentChat,) {
         const body = {
@@ -9,22 +15,21 @@ export const sendMessageAPI = {
             message: message,
         }
 
-        const { data } = await axios.post(`${baseURL}/waInstance${idInstance}/SendMessage/${apiTokenInstance}`, body, {
-            headers: { "Content-Type": "application/json" },
-        })
+        const { data } = await instance.post(`/waInstance${idInstance}/SendMessage/${apiTokenInstance}`, body)
         return data
     },
 }
 
+//получение сообщений(уведомлений)
 export const getMessageAPI = {
     async getMessage(idInstance, apiTokenInstance) {
-        const { data } = await axios.get(`${baseURL}/waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`)
+        const { data } = await instance.get(`/waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`)
         return data
     },
 
     async deleteNotice(idInstance, apiTokenInstance, receiptId) {
         setTimeout(async () => {
-            await axios.delete(`${baseURL}/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${receiptId}`)
+            await instance.delete(`/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${receiptId}`)
         }, 100)
     }
 }
