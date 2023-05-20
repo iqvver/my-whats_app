@@ -57,7 +57,7 @@ const MessageModule = () => {
 
   return (
     <div className="message-module-container">
-      <Header name={currentChat} />
+      <Header name={!currentChat ? "Содеседник" : currentChat} />
       <div>
         <MessageList currentMessageList={currentMessageList} />
         <SendForm

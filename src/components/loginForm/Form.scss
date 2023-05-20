@@ -14,7 +14,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     &__title {
@@ -23,6 +23,7 @@
     }
 
     &__reg {
+      height: 20px;
       background-color: inherit;
       font-size: 15px;
     }
@@ -30,7 +31,7 @@
 
   &-form {
     padding: 5px;
-    height: 50%;
+    height: 60%;
     width: 100%;
     background-color: inherit;
     display: flex;

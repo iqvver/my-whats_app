@@ -10,23 +10,35 @@ import { addChat, setCurrentChat } from "../../redux/chatSlice";
 //и всех паретров для его отрисовки
 
 const ChatModule = () => {
-
   //получение данных и стейта
   const chat = useSelector((state) => state.chat);
-  let userName = useSelector((state) => state.isAuth.name);
+  let userName = useSelector((state) => state.isAuth.chatId);
   const idChat = chat.chats.length + 1;
   const messages = [];
   const dispatch = useDispatch();
 
   const [newChatId, setChatId] = useState("");
+  const [chatIdError, setChatIdError] = useState(false);
   const [currentId, setCurrentId] = useState("");
 
   //добавление чата
   const onSubmit = (e) => {
+    if (!chatIdError) {
+      e.preventDefault();
+      dispatch(addChat({ idChat, newChatId, messages }));
+      setChatId("");
+    }
     e.preventDefault();
-    dispatch(addChat({ idChat, newChatId, messages }));
-    setChatId("");
   };
+
+  useEffect(() => {
+    let newIdChat = newChatId.replace(/[^0-9]/g, "");
+    if (newIdChat.length < 11) {
+      setChatIdError(true);
+    } else {
+      setChatIdError(false);
+    }
+  }, [newChatId]);
 
   //переключение между чатами
   useEffect(() => {
@@ -34,11 +46,10 @@ const ChatModule = () => {
   }, [currentId]);
 
   //что бы имя не было пустым
-  !userName ? (userName = "Я") : (userName = userName);
 
   return (
     <div className="chat-module-container">
-      <Header name={userName} />
+      <Header name={!userName ? "Вы" : userName} />
       <InputSend
         type={"text"}
         name={"chat"}
