@@ -1,5 +1,5 @@
 import { sendMessageAPI, getMessageAPI } from "../api/api";
-import { addMessage } from "../redux/chatSlice";
+import { addReseivedMessage } from "../redux/chatSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const sendNewMessage = createAsyncThunk(
@@ -13,24 +13,22 @@ export const sendNewMessage = createAsyncThunk(
             return rejectWithValue(e.message);
         }
     }
-
-
 )
 export const receiveMessage = createAsyncThunk(
     'chat/receiveMessage',
     async (apiData, { rejectWithValue, dispatch }) => {
         const { idInstance, apiTokenInstance } = apiData;
         try {
-            const resolved = await getMessageAPI.getMessage(idInstance, apiTokenInstance);
-            const message = resolved.body.messageData.extendedTextMessageData.text;
-            const receiptId = resolved.receiptId
-            dispatch(addMessage({ message }));
+            const data = await getMessageAPI.getMessage(idInstance, apiTokenInstance)
+            const message = data.body.messageData.textMessageData.textMessage;
+            const sender = data.body.senderData.chatId.replace(/[^0-9]/g, "");
+            const textMessage = { message, sender }
+            dispatch(addReseivedMessage(textMessage));
+            let receiptId = data.receiptId;
+
             getMessageAPI.deleteNotice(idInstance, apiTokenInstance, receiptId)
-            return resolved;
         } catch (e) {
             return rejectWithValue(e.message);
         }
     }
-
 )
-

@@ -6,8 +6,9 @@ const chatSlice = createSlice({
     name: "chat",
     initialState: {
         chats: [],
-        currentChat: '79622689318',
+        currentChat: '',
         currentChatId: '',
+        status: '',
     },
 
     reducers: {
@@ -25,15 +26,19 @@ const chatSlice = createSlice({
             state.chats[chatId].messages = [...state.chats[chatId].messages, payload.payload];
         },
 
+        addReseivedMessage: (state, payload) => {
+            const chatId = state.chats.findIndex(chat => chat.newChatId === payload.payload.sender)
+            state.chats[chatId].messages = [...state.chats[chatId].messages, payload.payload];
+        },
+
         extraReducers: {
             [sendNewMessage.pending]: (state) => {
                 state.status = 'loading';
                 state.error = null;
             },
-            [sendNewMessage.fulfilled]: (state, payload) => {
+            [sendNewMessage.fulfilled]: (state, action, payload) => {
                 state.status = 'resolved';
             },
-            [sendNewMessage.rejected]: setError,
 
             [receiveMessage.pending]: (state) => {
                 state.status = 'loading';
@@ -42,11 +47,12 @@ const chatSlice = createSlice({
             [receiveMessage.fulfilled]: (state, payload, action) => {
                 state.status = 'resolved';
             },
+            [sendNewMessage.rejected]: setError,
             [receiveMessage.rejected]: setError,
         },
     },
 });
 
-export const { setCurrentChat, addChat, addMessage } = chatSlice.actions;
+export const { setCurrentChat, addChat, addMessage, addReseivedMessage } = chatSlice.actions;
 
 export default chatSlice.reducer;

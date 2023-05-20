@@ -14,6 +14,7 @@ const MessageModule = () => {
     (state) => state.chat.chats[currentChatId]
   );
   const idInstance = useSelector((state) => state.isAuth.idInstance);
+  const sender = useSelector((state) => state.isAuth.name);
   const apiTokenInstance = useSelector(
     (state) => state.isAuth.apiTokenInstance
   );
@@ -21,19 +22,32 @@ const MessageModule = () => {
   const [message, setMessage] = useState("");
   const [itemDesabled, showDesabled] = useState(true);
 
+  let apiData = {
+    message,
+    idInstance,
+    currentChat,
+    apiTokenInstance,
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    let apiData = {
-      message,
-      idInstance,
-      currentChat,
-      apiTokenInstance,
-    };
-    dispatch(addMessage({ message }));
+    dispatch(addMessage({ message, sender }));
     dispatch(sendNewMessage(apiData));
     dispatch(receiveMessage(apiData));
     setMessage("");
   };
+
+  const addNewMessage = () => {
+    dispatch(receiveMessage(apiData));
+    console.log("1");
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      addNewMessage();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (currentChat) {

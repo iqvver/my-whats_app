@@ -16,30 +16,6 @@
   align-items: center;
   overflow-x: hidden;
 
-  &:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 15px solid $message-color;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    top: 0;
-    right: -15px;
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 17px solid $message-color;
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    top: -1px;
-    right: -17px;
-  }
-
   &__content {
     background: none;
     color: $text-color;
