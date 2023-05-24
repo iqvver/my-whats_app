@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import Form from "../../components/loginForm/Form";
 import { useDispatch, useSelector } from "react-redux";
-import { isAuth } from "../../redux/authSlice";
+import { login } from "../../actions/authAction";
 
-//страница входа 
+//страница входа
 const AuthPage = () => {
-  const authItems = useSelector((state) => state.isAuth);
+  const { name, idInstance, apiTokenInstance } = useSelector(
+    (state) => state.isAuth
+  );
   const dispatch = useDispatch();
 
-  const [chatId, setName] = useState(authItems.name);
-  const [idInst, setIdInst] = useState(authItems.idInstance);
-  const [apiToken, setApiToken] = useState(authItems.apiTokenInstance);
+  const [myName, setName] = useState(name);
+  const [idInst, setIdInst] = useState(idInstance);
+  const [apiToken, setApiToken] = useState(apiTokenInstance);
+
+  const actionData = { myName, idInst, apiToken };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(isAuth({ idInst, apiToken, chatId }));
+    dispatch(login(actionData));
   };
 
   return (
@@ -24,7 +28,7 @@ const AuthPage = () => {
       apiToken={apiToken}
       setApiToken={setApiToken}
       setName={setName}
-      name={chatId}
+      name={myName}
       onSubmit={onSubmit}
     />
   );

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentChat } from "../../redux/chatSlice";
 import ChatError from "../../components/errors/ChatError";
 import { addNewChat } from "../../actions/actions";
+import { logout } from "../../actions/authAction";
 
 //контейнерная компонента (HOС) для получения данных для чата
 //и всех паретров для его отрисовки
@@ -14,7 +15,7 @@ import { addNewChat } from "../../actions/actions";
 const ChatModule = () => {
   //получение данных и стейта
   const chat = useSelector((state) => state.chat);
-  let userName = useSelector((state) => state.isAuth.chatId);
+  let userName = useSelector((state) => state.isAuth.myName);
   const idChat = chat.chats.length + 1;
   const messages = [];
   const dispatch = useDispatch();
@@ -35,7 +36,12 @@ const ChatModule = () => {
 
   return (
     <div className="chat-module-container">
-      <Header name={!userName ? "Вы" : userName} />
+      <Header
+        name={!userName ? "Вы" : userName}
+        buttonName="Выйти"
+        buttonType="submit"
+        buttonClick={() => dispatch(logout())}
+      />
       <InputSend
         type={"text"}
         name={"chat"}

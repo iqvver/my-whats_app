@@ -4,21 +4,29 @@ import { createSlice } from "@reduxjs/toolkit";
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        chatId: '',
-        idInstance: '1101821228',
-        apiTokenInstance: '97647e8611ae4d969163dbb802be57095c5f327535714555aa',
-        error: null,
+        myName: '',
+        idInstance: '',
+        apiTokenInstance: '',
+        isAuth: false,
     },
 
     reducers: {
-        isAuth(state, payload) {
+        isLogin(state, payload) {
+            state.myName = payload.payload.myName;
             state.idInstance = payload.payload.idInst;
             state.apiTokenInstance = payload.payload.apiToken;
-            state.chatId = payload.payload.chatId;
+            state.isAuth = true;
+            console.log(payload);
+        },
+        isLogout(state, payload) {
+            state.myName = '';
+            state.idInstance = '';
+            state.apiTokenInstance = '';
+            state.isAuth = false;
         },
     },
 });
 
-export const { isAuth } = authSlice.actions;
+export const { isLogin, isLogout } = authSlice.actions;
 
 export default authSlice.reducer;

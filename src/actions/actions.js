@@ -43,6 +43,7 @@ export const receiveMessage = createAsyncThunk(
     async (apiData, { rejectWithValue, dispatch }) => {
         const { idInstance, apiTokenInstance } = apiData;
         try {
+            console.log(apiData);
             const data = await getMessageAPI.getMessage(idInstance, apiTokenInstance)
             let message = data.body.messageData?.textMessageData?.textMessage;
             {
