@@ -8,11 +8,11 @@ import ChatPage from "./pages/ChatPage/ChatPage";
 //введены то произойдет переключение на страницу с чатом
 //надо переделать на ROUTE
 function App() {
-  const { chatId, idInstance, apiTokenInstance, error } = useSelector((state) => state.isAuth);
+  const { idInstance, apiTokenInstance, error } = useSelector((state) => state.isAuth);
 
   return (
     <div className="app">
-      {chatId && idInstance && apiTokenInstance && !error ? <ChatPage /> : <AuthPage />
+      {idInstance && apiTokenInstance && !error ? <ChatPage /> : <AuthPage />
       }
     </div>
   );

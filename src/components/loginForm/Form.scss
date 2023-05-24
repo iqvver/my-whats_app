@@ -3,9 +3,9 @@
 .login {
   &-container {
     padding: 30px;
-    margin-top: 100px;
-    width: 500px;
-    max-height: 400px;
+    margin-top: 60px;
+    width: 400px;
+    max-height: 500px;
     background-color: $bg-subcolor;
     border: 1px solid $text-subcolor;
   }
@@ -30,17 +30,25 @@
   }
 
   &-form {
-    padding: 5px;
     height: 60%;
     width: 100%;
     background-color: inherit;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-  }
+    justify-content: space-around;
+    align-content: center;
 
-  &__label {
-    text-align: center;
-    background-color: inherit;
+    &__input {
+      background-color: inherit;
+    }
+
+    &__label {
+      padding: 5px;
+      background-color: inherit;
+    }
+
+    &__btm {
+      margin-top: 10px;
+    }
   }
 }

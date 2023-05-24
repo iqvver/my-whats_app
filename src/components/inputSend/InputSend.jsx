@@ -16,13 +16,12 @@ const InputSend = (props) => {
     onSubmit,
     buttonType,
     itemDesabled,
-    chatIdError,
     mask,
   } = props;
   return (
     <>
-      <form className="chat-start" onSubmit={onSubmit}>
-        <div className="chat-start__input">
+      <form className="input-send" onSubmit={onSubmit}>
+        <div className="input-send__input">
           <Input
             type={type}
             name={name}
@@ -33,7 +32,7 @@ const InputSend = (props) => {
             mask={mask}
           />
         </div>
-        <div className="chat-start__button">
+        <div className="input-send__button">
           <Button
             buttonName={buttonName}
             buttonType={buttonType}

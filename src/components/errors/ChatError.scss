@@ -1,0 +1,10 @@
+.chat {
+  &__error {
+    padding-left: 40px;
+    color: red;
+  }
+
+  &__error-not-visible {
+    visibility: hidden;
+  }
+}

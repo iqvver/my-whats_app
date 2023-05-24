@@ -1,6 +1,8 @@
 .message-list {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  padding: 20px;
+  display: flex;
+  max-height: 90vh;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow-y: auto;
 }

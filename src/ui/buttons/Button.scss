@@ -1,13 +1,14 @@
 @import "../../scss/base/variables";
 
 .button {
-  height: 25px;
+  height: 35px;
   width: 100%;
   border: 2px solid $text-subcolor;
   color: rgb(255, 255, 255);
   color: $text-color;
   font-weight: 500;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .button:hover {

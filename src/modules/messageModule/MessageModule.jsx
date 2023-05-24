@@ -10,40 +10,32 @@ import { sendNewMessage, receiveMessage } from "../../actions/actions";
 //и всех паретров для их отрисовки
 
 const MessageModule = () => {
-
   //получение данных и стейта
   //десткуктуризация
-  const {currentChat, currentChatId} = useSelector((state) => state.chat);
-  const currentMessageList = useSelector((state) => state.chat.chats[currentChatId]);
-  const {idInstance, apiTokenInstance} = useSelector((state) => state.isAuth);
+  const { currentChat, currentChatId } = useSelector((state) => state.chat);
+  const currentMessageList = useSelector(
+    (state) => state.chat.chats[currentChatId]
+  );
+  const { idInstance, apiTokenInstance } = useSelector((state) => state.isAuth);
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
   const [itemDesabled, showDesabled] = useState(true);
 
   //обьект для обрадоткт API
-  let apiData = {
-    message,
-    idInstance,
-    currentChat,
-    apiTokenInstance,
-  };
+  let actionData = { message, idInstance, currentChat, apiTokenInstance };
 
   //отправка  сообщения
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(sendNewMessage(apiData));
+    dispatch(sendNewMessage(actionData));
     setMessage("");
   };
-
-  const addNewMessage = () => {
-    dispatch(receiveMessage(apiData));
-  };
-
+  
   //обновление для получения сообщений в реальном времени
   //интервал 10 сек
   useEffect(() => {
     const interval = setInterval(() => {
-      addNewMessage();
+      dispatch(receiveMessage(actionData));
     }, 10000);
     return () => clearInterval(interval);
   }, []);
