@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { sendNewMessage, receiveMessage, addNewChat } from "../actions/actions";
-import { setError } from '../helpers/helper-reduser'
 
 //срез чатов и сообщений к ним
 const chatSlice = createSlice({
@@ -35,35 +33,6 @@ const chatSlice = createSlice({
         addReseivedMessage: (state, payload) => {
             const chatId = state.chats.findIndex(chat => chat.newChatId === payload.payload.chatId)
             state.chats[chatId].messages = [...state.chats[chatId].messages, payload.payload];
-        },
-
-        extraReducers: {
-            //toolkit
-            [addNewChat.pending]: (state) => {
-                state.status = 'loading';
-                state.error = null;
-            },
-            [addNewChat.fulfilled]: (state) => {
-                state.status = 'resolved';
-            },
-            [sendNewMessage.pending]: (state) => {
-                state.status = 'loading';
-                state.error = null;
-            },
-            [sendNewMessage.fulfilled]: (state) => {
-                state.status = 'resolved';
-            },
-
-            [receiveMessage.pending]: (state) => {
-                state.status = 'loading';
-                state.error = null;
-            },
-            [receiveMessage.fulfilled]: (state) => {
-                state.status = 'resolved';
-            },
-            [sendNewMessage.rejected]: setError,
-            [receiveMessage.rejected]: setError,
-            [addNewChat.rejected]: setError,
         },
     },
 });

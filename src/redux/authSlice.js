@@ -16,9 +16,8 @@ const authSlice = createSlice({
             state.idInstance = payload.payload.idInst;
             state.apiTokenInstance = payload.payload.apiToken;
             state.isAuth = true;
-            console.log(payload);
         },
-        isLogout(state, payload) {
+        isLogout(state) {
             state.myName = '';
             state.idInstance = '';
             state.apiTokenInstance = '';

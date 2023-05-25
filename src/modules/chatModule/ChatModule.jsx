@@ -6,7 +6,7 @@ import ChatList from "../../subModules/chatList/ChatList";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentChat } from "../../redux/chatSlice";
 import ChatError from "../../components/errors/ChatError";
-import { addNewChat } from "../../actions/actions";
+import { addNewChat } from "../../actions/messageActions";
 import { logout } from "../../actions/authAction";
 
 //контейнерная компонента (HOС) для получения данных для чата

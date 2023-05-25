@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import SendForm from "../../components/sendForm/SendForm";
 import MessageList from "../../subModules/messageList/MessageList";
 import { useDispatch, useSelector } from "react-redux";
-import { sendNewMessage, receiveMessage } from "../../actions/actions";
+import { sendNewMessage, receiveMessage } from "../../actions/messageActions";
 
 //контейнерная компонента (HOС) для получения данных для сообщений
 //и всех паретров для их отрисовки
@@ -38,7 +38,7 @@ const MessageModule = () => {
       dispatch(receiveMessage(actionData));
     }, 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [dispatch]);
 
   //отключение инпута и кнопки, когда не выбран чат
   useEffect(() => {

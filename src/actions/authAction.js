@@ -7,7 +7,6 @@ export const login = createAsyncThunk(
         const { myName, idInst, apiToken } = actionData;
         try {
             dispatch(isLogin(actionData));
-            console.log(actionData);
             localStorage.setItem("auth", "true")
             localStorage.setItem("myName", myName)
             localStorage.setItem("idInstance", idInst)
